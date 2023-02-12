@@ -1,13 +1,8 @@
 package transport;
 
-public class Car {
-    private final String brand;
-    private final String model;
-    private double engineVolume;
-    private String color;
-    private final int year;
-    private final String country;
+public class Car extends Transport{
 
+    private double engineVolume;
     private String gear;
     private final String bodyType;
     private String registerNumber;
@@ -36,12 +31,9 @@ public class Car {
                int year, String country,
                String color, double engineVolume, String gear,
                String bodyType, String registerNumber,
-               int seat, boolean isSummerTyres, Key key) {
-        this.brand = checkBrand(brand);
-        this.model = checkModel(model);
-        this.year = checkYear(year);
-        this.country = checkCountry(country);
-        this.color = checkColor(color);
+               int seat, boolean isSummerTyres, Key key, int speed) {
+        super(brand, model, year, country, color, speed);
+
         this.engineVolume = checkEngineVolume(engineVolume);
         this.gear = checkGear(gear);
         this.bodyType = checkBodyType(bodyType);
@@ -51,12 +43,9 @@ public class Car {
         this.key = key;
 
     }
-    public String getBrand() {return brand;}
-    public String getModel() {return model;}
+
     public double getEngineVolume() {return engineVolume;}
-    public String getColor() {return color;}
-    public int getYear() {return year;}
-    public String getCountry() {return country;}
+
     public String getGear() {return gear;}
     public String getBodyType() {return bodyType;}
     public String getRegisterNumber() {return registerNumber;}
@@ -74,9 +63,7 @@ public class Car {
     public void setEngineVolume(double engineVolume) {
         this.engineVolume = checkEngineVolume(engineVolume);
     }
-    public void setColor(String color) {
-        this.color = checkColor(color);
-    }
+
     public void setGear(String gear) {
         this.gear = checkGear(gear);
     }
@@ -152,13 +139,7 @@ public class Car {
 
     @Override
     public String toString() {
-        return "машина " +
-                "марка='" + brand + '\'' +
-                ", модель='" + model + '\'' +
-                ", двигатель=" + engineVolume +
-                ", цвет='" + color + '\'' +
-                ", год=" + year +
-                ", страна='" + country + '\'' +
+        return super.toString() + " " +
                 ", коробка='" + gear + '\'' +
                 ", тип кузова='" + bodyType + '\'' +
                 ", госномер='" + registerNumber + '\'' +
